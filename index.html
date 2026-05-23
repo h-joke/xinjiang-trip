@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新疆伊犁北疆七日精华环线</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #c8dff5;
+    --deep: #1a3a5c;
+    --sage: #6b8f71;
+    --gold: #c9974c;
+    --sand: #e8dcc8;
+    --snow: #f5f2ee;
+    --ink: #1e1a16;
+    --mist: #8faab8;
+    --accent: #d4602a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--snow);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    min-height: 600px;
+    background: linear-gradient(160deg, #0d2137 0%, #1a3a5c 40%, #2d6a8a 70%, #6b8f71 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 8vw 8vh;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Cpath d='M0 300 Q80 200 160 240 Q240 280 320 180 Q400 80 480 140 Q560 200 640 120 Q720 40 800 100 L800 400 L0 400Z' fill='%23ffffff08'/%3E%3Cpath d='M0 340 Q100 260 200 300 Q300 340 400 230 Q500 120 600 180 Q700 240 800 160 L800 400 L0 400Z' fill='%23ffffff06'/%3E%3C/svg%3E") center bottom / cover no-repeat;
+    pointer-events: none;
+  }
+
+  .hero-stars {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(1.5px 1.5px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 8%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 40% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 5%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 75% 12%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 18%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 28%, rgba(255,255,255,0.5) 0%, transparent 100%);
+  }
+
+  .hero-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(11px, 1.2vw, 14px);
+    letter-spacing: 0.35em;
+    color: var(--sky);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s 0.15s ease both;
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    color: var(--sand);
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s 0.25s ease both;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .hero-meta-item .label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--mist);
+    text-transform: uppercase;
+  }
+
+  .hero-meta-item .value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    right: 8vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 0.4; }
+    50% { transform: scaleY(0.5); opacity: 0.8; }
+  }
+
+  /* OVERVIEW */
+  .overview {
+    background: var(--deep);
+    color: var(--sand);
+    padding: 5rem 8vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .overview-text h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .overview-text p {
+    line-height: 2;
+    opacity: 0.85;
+    font-size: 0.95rem;
+  }
+
+  .overview-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .stat-card:hover { background: rgba(255,255,255,0.1); }
+
+  .stat-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-card .desc {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+
+  /* TIMELINE */
+  .timeline-section {
+    padding: 6rem 8vw;
+    background: var(--snow);
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--deep);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .section-header .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--deep), transparent);
+    margin-bottom: 0.5rem;
+  }
+
+  /* DAY CARD */
+  .day-card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .day-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .day-num-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.2rem;
+  }
+
+  .day-badge {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--deep);
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(26,58,92,0.25);
+  }
+
+  .day-badge .day-text {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .day-badge .day-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+
+  .day-connector {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--deep), var(--sand));
+    margin-top: 0.8rem;
+    min-height: 30px;
+  }
+
+  .day-content {
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .day-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3rem;
+    color: var(--deep);
+    font-weight: 600;
+  }
+
+  .day-route {
+    font-size: 0.8rem;
+    color: var(--mist);
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
+
+  .day-drive {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--sand);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--ink);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .day-drive::before {
+    content: '🚗';
+    font-size: 0.85rem;
+  }
+
+  .stops {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stop {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    border-left: 3px solid var(--sage);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1rem;
+    align-items: start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .stop:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .stop.highlight { border-left-color: var(--gold); }
+  .stop.food { border-left-color: var(--accent); }
+
+  .stop-time {
+    font-size: 0.78rem;
+    color: var(--mist);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding-top: 0.15rem;
+    white-space: nowrap;
+  }
+
+  .stop-body {}
+
+  .stop-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    color: var(--deep);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stop-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .tag-nature { background: #e8f4e8; color: #3a7a3a; }
+  .tag-culture { background: #fef3e2; color: #8b5e00; }
+  .tag-food { background: #fde8e0; color: #b03a1a; }
+  .tag-road { background: #e0eeff; color: #1a4a8a; }
+  .tag-star { background: #1a3a5c; color: #c9974c; }
+
+  .stop-desc {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .stop-tips {
+    margin-top: 0.6rem;
+    padding: 0.5rem 0.8rem;
+    background: #fafafa;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #777;
+    line-height: 1.7;
+    border-left: 2px solid var(--sand);
+  }
+
+  .stop-tips::before {
+    content: '💡 ';
+  }
+
+  .day-summary {
+    background: linear-gradient(135deg, var(--deep) 0%, #2d5a8a 100%);
+    color: rgba(255,255,255,0.85);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-summary::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* PRACTICAL INFO */
+  .practical {
+    background: var(--deep);
+    padding: 5rem 8vw;
+  }
+
+  .practical h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    font-weight: 400;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.8rem;
+    color: var(--sand);
+  }
+
+  .info-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    color: var(--sky);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 400;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .info-card li {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .info-card li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.35rem;
+  }
+
+  /* TABLE */
+  .table-section {
+    padding: 4rem 8vw;
+    background: #f0ebe3;
+  }
+
+  .table-section h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    color: var(--deep);
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  .overview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .overview-table thead {
+    background: var(--deep);
+    color: var(--sand);
+  }
+
+  .overview-table th {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    font-size: 0.82rem;
+  }
+
+  .overview-table td {
+    padding: 0.9rem 1.2rem;
+    border-bottom: 1px solid #eee;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+
+  .overview-table tr:last-child td { border-bottom: none; }
+  .overview-table tr:hover td { background: #faf6f0; }
+
+  .day-cell {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 600;
+    color: var(--deep);
+    white-space: nowrap;
+  }
+
+  .km-badge {
+    display: inline-block;
+    background: var(--sand);
+    color: var(--ink);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.78rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.35);
+    padding: 2rem 8vw;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer span:first-child { color: rgba(255,255,255,0.6); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .overview { grid-template-columns: 1fr; gap: 2.5rem; }
+    .overview-stats { grid-template-columns: 1fr 1fr; }
+    .day-card { grid-template-columns: 60px 1fr; }
+    .day-badge { width: 46px; height: 46px; }
+    .day-badge .day-n { font-size: 1.2rem; }
+    .day-content { padding-left: 1rem; }
+    .stop { grid-template-columns: 1fr; gap: 0.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stars"></div>
+  <div class="hero-label">自驾深度游 · 2025最美路线</div>
+  <h1 class="hero-title">新疆北疆<br>伊犁环线</h1>
+  <p class="hero-subtitle">七日 · 从乌鲁木齐出发</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="label">总里程</span>
+      <span class="value">约 1,600 公里</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="label">最佳时节</span>
+      <span class="value">6月中旬 — 9月底</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="label">交通方式</span>
+      <span class="value">自驾 SUV / 包车</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="label">路线性质</span>
+      <span class="value">天山南北穿越环线</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="overview-text">
+    <h2>关于这条路线</h2>
+    <p>从乌鲁木齐出发，经天山天池热身，随即踏上传奇的独库公路（G217）穿越天山腹地，深入伊犁河谷——新疆最绿意盎然的秘境。在这里，草原、云杉、冰川与哈萨克牧歌交织，是任何其他地方都无法复制的体验。最后经赛里木湖与果子沟大峡谷收尾，从容高速返程。</p>
+    <br>
+    <p>本线路每日驾车控制在 <strong style="color:var(--gold)">4小时以内</strong>，充分把时间留给景点与体验，不赶路、不走马观花。</p>
+  </div>
+  <div class="overview-stats">
+    <div class="stat-card"><span class="num">7</span><span class="desc">天 · 完整行程</span></div>
+    <div class="stat-card"><span class="num">12+</span><span class="desc">核心景点</span></div>
+    <div class="stat-card"><span class="num">1600</span><span class="desc">公里 · 总里程</span></div>
+    <div class="stat-card"><span class="num">3</span><span class="desc">座草原 · 深度游</span></div>
+  </div>
+</section>
+
+<!-- TABLE OVERVIEW -->
+<section class="table-section">
+  <h2>行程速览</h2>
+  <table class="overview-table">
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>路线</th>
+        <th>驾车</th>
+        <th>核心体验</th>
+        <th>住宿</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="day-cell">D1</td>
+        <td>乌鲁木齐 → 天池 → 乔尔玛</td>
+        <td><span class="km-badge">~290km</span></td>
+        <td>天山天池 · 独库公路入口</td>
+        <td>乔尔玛民宿/营地</td>
+      </tr>
+      <tr>
+        <td class="day-cell">D2</td>
+        <td>乔尔玛 → 天山分水岭 → 那拉提</td>
+        <td><span class="km-badge">~180km</span></td>
+        <td>独库公路精华段 · 四季穿越</td>
+        <td>那拉提草原毡房</td>
+      </tr>
+      <tr>
+        <td class="day-cell">D3</td>
+        <td>那拉提 → 库尔德宁</td>
+        <td><span class="km-badge">~90km</span></td>
+        <td>那拉提深度 · 天山云杉林</td>
+        <td>巩留县城</td>
+      </tr>
+      <tr>
+        <td class="day-cell">D4</td>
+        <td>库尔德宁 → 喀拉峻</td>
+        <td><span class="km-badge">~80km</span></td>
+        <td>世遗草原 · 库克苏大峡谷</td>
+        <td>特克斯县城</td>
+      </tr>
+      <tr>
+        <td class="day-cell">D5</td>
+        <td>特克斯 → 夏塔 → 伊宁市</td>
+        <td><span class="km-badge">~190km</span></td>
+        <td>冰川峡谷 · 伊宁夜市</td>
+        <td>伊宁市区酒店</td>
+      </tr>
+      <tr>
+        <td class="day-cell">D6</td>
+        <td>伊宁 → 霍城 → 赛里木湖</td>
+        <td><span class="km-badge">~120km</span></td>
+        <td>薰衣草花海 · 高山冰蚀湖</td>
+        <td>赛里木湖木屋</td>
+      </tr>
+      <tr>
+        <td class="day-cell">D7</td>
+        <td>赛里木湖 → 果子沟 → 乌鲁木齐</td>
+        <td><span class="km-badge">~680km</span></td>
+        <td>果子沟大桥 · 返程</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="section-header">
+    <h2>每日详细行程</h2>
+    <div class="line"></div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card" id="d1">
+    <div class="day-num-col">
+      <div class="day-badge">
+        <span class="day-text">DAY</span>
+        <span class="day-n">1</span>
+      </div>
+      <div class="day-connector"></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div>
+          <div class="day-title">乌鲁木齐 → 天山天池 → 乔尔玛</div>
+          <div class="day-route">出发日 · 热身揭幕</div>
+        </div>
+        <div class="day-drive">驾车约 4h（含景区）</div>
+      </div>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-time">07:30</div>
+          <div class="stop-body">
+            <div class="stop-name">乌鲁木齐出发<span class="stop-tag tag-road">出发点</span></div>
+            <div class="stop-desc">从市区出发，建议前一晚在大巴扎附近解决早餐，抓饼 + 红糖奶茶开启旅程。</div>
+          </div>
+        </div>
+        <div class="stop highlight">
+          <div class="stop-time">09:00</div>
+          <div class="stop-body">
+            <div class="stop-name">天山天池景区<span class="stop-tag tag-nature">自然</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">距乌鲁木齐约110公里，驾车约1.5小时。天池海拔1910米，博格达雪峰（5445米）倒映湖中，是北疆的开场白。可选乘缆车俯瞰全湖，亦可骑马沿湖环行。建议游览2.5–3小时。</div>
+            <div class="stop-tips">早上9点前入园人少光线佳；缆车单程约30元；骑马绕湖约80元/圈。注意高处紫外线强，必备防晒。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">13:00</div>
+          <div class="stop-body">
+            <div class="stop-name">途中午餐（阜康或奇台）<span class="stop-tag tag-food">餐饮</span></div>
+            <div class="stop-desc">沿途找清真面馆，羊肉拉条子或拌面都是好选择，价格实惠分量足。</div>
+          </div>
+        </div>
+        <div class="stop highlight">
+          <div class="stop-time">14:30</div>
+          <div class="stop-body">
+            <div class="stop-name">进入独库公路（G217）北段<span class="stop-tag tag-road">公路</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">从独山子方向进入独库公路，这是中国最壮观公路之一。北段从奎屯起至乔尔玛段，穿越戈壁、河谷与松林，傍晚光线金黄，沿途有多处观景台值得停车。</div>
+            <div class="stop-tips">务必出发前确认当日路况（可关注"新疆公路"微信公众号），独库公路每年约6月中旬至10月初开放。限速60–80km/h，不要超速。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">18:30</div>
+          <div class="stop-body">
+            <div class="stop-name">乔尔玛 · 入住<span class="stop-tag tag-road">中转站</span></div>
+            <div class="stop-desc">乔尔玛是独库公路上的重要补给站，附近有烈士陵园（可驻足缅怀）。有民宿与简单旅馆，晚上可在营地烧烤。次日清晨提前出发卡位分水岭最美光线。</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-summary">当日里程约290公里，节奏适中。天池作为热身景点，配合独库公路北段的苍茫景色，在乔尔玛过夜恰到好处——为明日的穿越大戏积蓄期待。</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card" id="d2">
+    <div class="day-num-col">
+      <div class="day-badge" style="background: #8b5e00;">
+        <span class="day-text">DAY</span>
+        <span class="day-n">2</span>
+      </div>
+      <div class="day-connector"></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div>
+          <div class="day-title">乔尔玛 → 独库公路核心 → 那拉提草原</div>
+          <div class="day-route">⭐ 全程最壮观一天</div>
+        </div>
+        <div class="day-drive">驾车约 3.5h（慢走）</div>
+      </div>
+      <div class="stops">
+        <div class="stop highlight">
+          <div class="stop-time">07:00</div>
+          <div class="stop-body">
+            <div class="stop-name">天山分水岭（海拔3000+米）<span class="stop-tag tag-star">精华</span><span class="stop-tag tag-road">公路奇观</span></div>
+            <div class="stop-desc">独库公路最高点，雪山、云海与草甸同框。清晨阳光从东方打来，整个山体染成金红色。这是独库公路最值得停车驻足的地方，少则半小时，多则随意。纪念碑旁有小摊贩出售热奶茶，冷风中格外珍贵。</div>
+            <div class="stop-tips">海拔较高，注意保暖（即使夏天早晨也需穿外套）；可能遇到施工或积雪路段，保持车距。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">09:30</div>
+          <div class="stop-body">
+            <div class="stop-name">小库车河谷 · 沿途观景<span class="stop-tag tag-nature">风景</span></div>
+            <div class="stop-desc">分水岭以南，公路沿小库车河蜿蜒下降，两侧是垂直的峡谷岩壁与奔腾的河流，驾车体验极为刺激。建议在安全的观景台停车拍照，切勿边开车边拍。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">11:30</div>
+          <div class="stop-body">
+            <div class="stop-name">小尤尔都斯草原 · 短暂停留<span class="stop-tag tag-nature">草原</span></div>
+            <div class="stop-desc">公路下到南坡后开始出现草原，马群和羊群点缀其间。可以在路边和哈萨克牧民合影，或品尝现场挤的新鲜马奶（5–10元）。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">13:00</div>
+          <div class="stop-body">
+            <div class="stop-name">午餐 · 巴音布鲁克镇（如路过）<span class="stop-tag tag-food">餐饮</span></div>
+            <div class="stop-desc">巴音布鲁克镇上有简单餐厅，羊肉串和抓饭是主选。若不走此路段，可在那拉提景区附近觅食。</div>
+          </div>
+        </div>
+        <div class="stop highlight">
+          <div class="stop-time">15:00</div>
+          <div class="stop-body">
+            <div class="stop-name">那拉提草原景区<span class="stop-tag tag-nature">草原</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">进入伊犁河谷腹地，那拉提是新疆最著名的草原之一。景区分空中草原（缆车）和河谷草原（步道）两区。建议先缆车上顶俯瞰整个河谷与山势，再步行下山体验草甸细节。骑马进入深处草原也是上选。傍晚光线最美。</div>
+            <div class="stop-tips">门票约150元；缆车另计约60元；骑马约80–150元/时。建议预购联票。旺季（7–8月）游客多，早到避堵。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">19:00</div>
+          <div class="stop-body">
+            <div class="stop-name">草原毡房 · 过夜<span class="stop-tag tag-culture">哈萨克文化</span></div>
+            <div class="stop-desc">入住景区内或周边哈萨克族毡房（蒙古包）。晚上主人会准备手抓肉、馕和奶茶，热情的主人有时会弹起冬不拉。星空清晰度极高，建议带星图App或相机做延时摄影。</div>
+            <div class="stop-tips">旺季毡房一定要提前预订，建议至少提前1周。价格约150–300元/间。</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-summary">今天是整个行程最史诗的一天。独库公路的四季变换——从雪山、峡谷到草原——在短短180公里内完成，是一种时间被压缩的壮美体验。抵达那拉提时已进入另一个世界：绿色、柔软、充满生机。</div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card" id="d3">
+    <div class="day-num-col">
+      <div class="day-badge" style="background: var(--sage);">
+        <span class="day-text">DAY</span>
+        <span class="day-n">3</span>
+      </div>
+      <div class="day-connector"></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div>
+          <div class="day-title">那拉提深度游 → 库尔德宁自然保护区</div>
+          <div class="day-route">草原 · 云杉 · 清幽一日</div>
+        </div>
+        <div class="day-drive">驾车约 2h</div>
+      </div>
+      <div class="stops">
+        <div class="stop highlight">
+          <div class="stop-time">08:00</div>
+          <div class="stop-body">
+            <div class="stop-name">那拉提草原 · 清晨深度游<span class="stop-tag tag-nature">草原</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">晨雾中的那拉提是最美时刻：草地上挂着露水，远山若隐若现，偶有牧民骑马经过。可漫步河谷草原步道（约3公里），观察草场上自由觅食的马匹与牛群，感受最原始的伊犁游牧气息。</div>
+            <div class="stop-tips">清晨在毡房附近可免费看到马群集合的场景；若前一天已购联票，今日入园无需再买。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">11:30</div>
+          <div class="stop-body">
+            <div class="stop-name">新源县城 · 午餐<span class="stop-tag tag-food">餐饮</span></div>
+            <div class="stop-desc">驱车30分钟到新源县城，推荐"皮辣红"（皮芽子+辣椒+西红柿炒鸡蛋）、大盘鸡，或直接找一家哈萨克餐厅点纳仁（手扯面）。</div>
+          </div>
+        </div>
+        <div class="stop highlight">
+          <div class="stop-time">14:00</div>
+          <div class="stop-body">
+            <div class="stop-name">库尔德宁自然保护区<span class="stop-tag tag-nature">云杉原始林</span></div>
+            <div class="stop-desc">从新源前往巩留县，约60公里。库尔德宁是天山最大的原始云杉（雪岭云杉）保护区，同时也是世界自然遗产地。进入林区后气温骤降，松香弥漫，溪水清澈见底。景区设有木栈道，轻松步行即可深入林中。傍晚前往巩留县城住宿。</div>
+            <div class="stop-tips">景区门票约50元；若在整修期可能无法进入，出发前最好打电话确认（+86 999 562 5216）。林区内蚊虫较多，建议涂抹防蚊液。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">18:30</div>
+          <div class="stop-body">
+            <div class="stop-name">巩留县城 · 入住<span class="stop-tag tag-road">过夜点</span></div>
+            <div class="stop-desc">巩留是个小而宜居的县城，物价低，食物实在。推荐尝试当地的核桃与蜂蜜（伊犁特产），晚上逛步行街随意吃。</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-summary">今天节奏放慢，把紧张的行程留给一段宁静的"呼吸"。草原的清晨与云杉林的下午，是两种截然不同的静谧——都是新疆最珍贵的礼物。</div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card" id="d4">
+    <div class="day-num-col">
+      <div class="day-badge" style="background: #5a7a3a;">
+        <span class="day-text">DAY</span>
+        <span class="day-n">4</span>
+      </div>
+      <div class="day-connector"></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div>
+          <div class="day-title">喀拉峻草原 + 库克苏大峡谷</div>
+          <div class="day-route">⭐ 世界自然遗产 · 全天沉浸</div>
+        </div>
+        <div class="day-drive">驾车约 1.5h</div>
+      </div>
+      <div class="stops">
+        <div class="stop highlight">
+          <div class="stop-time">08:30</div>
+          <div class="stop-body">
+            <div class="stop-name">喀拉峻草原景区<span class="stop-tag tag-nature">世遗草原</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">被誉为"人体曲线草原"——缓坡绵延、野花覆地，山丘轮廓流畅如雕塑。景区设有内部摆渡车，可在多个观景点依次下车拍照。从景区内高处回望时，整片草原呈现出三维的波浪感，令人叹为观止。骑马可深入无游客区域，体验真正的游牧风情。</div>
+            <div class="stop-tips">推荐购买"喀拉峻+库克苏"联票约275元；景区内摆渡车约50元；骑马约100–200元/时。全程约4–5小时，早到避免排队。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">12:30</div>
+          <div class="stop-body">
+            <div class="stop-name">景区内午餐<span class="stop-tag tag-food">餐饮</span></div>
+            <div class="stop-desc">景区有简餐售卖（拉面、抓饭），价格稍高，也可自备食物在草地上野餐，天气好时是极佳体验。</div>
+          </div>
+        </div>
+        <div class="stop highlight">
+          <div class="stop-time">14:30</div>
+          <div class="stop-body">
+            <div class="stop-name">库克苏大峡谷<span class="stop-tag tag-nature">峡谷</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">与喀拉峻相邻，需乘渡船过库克苏河进入。峡谷赤红色的砂岩壁垒高耸，与绿草场景形成强烈视觉反差。下午3–5点阳光角度绝佳，峡谷内色彩最为饱满。步行约1.5小时可走完主要观景路线。</div>
+            <div class="stop-tips">渡船约10元；注意峡谷内碎石路，穿运动鞋；傍晚蚊虫增多，提前涂驱虫液。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">18:00</div>
+          <div class="stop-body">
+            <div class="stop-name">特克斯县城 · 入住<span class="stop-tag tag-road">过夜点</span></div>
+            <div class="stop-desc">特克斯以其独特的"八卦城"规划著称（城市按照八卦图形布局），可晚饭后短暂夜游市区。明日前往夏塔需办理边防证。</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-summary">草原之美在于它的尺度和生命力，喀拉峻把这两者推向极致。从草原到峡谷只需半小时车程，却是两个截然不同的视觉世界，这正是伊犁地形多样性的惊人之处。</div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card" id="d5">
+    <div class="day-num-col">
+      <div class="day-badge" style="background: #3a6060;">
+        <span class="day-text">DAY</span>
+        <span class="day-n">5</span>
+      </div>
+      <div class="day-connector"></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div>
+          <div class="day-title">特克斯 → 夏塔景区 → 伊宁市</div>
+          <div class="day-route">冰川秘境 · 伊犁首府夜生活</div>
+        </div>
+        <div class="day-drive">驾车约 3h</div>
+      </div>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-time">08:00</div>
+          <div class="stop-body">
+            <div class="stop-name">边防证办理<span class="stop-tag tag-culture">证件</span></div>
+            <div class="stop-desc">夏塔景区位于边境管理区，需提前准备"边境地区通行证"。可在特克斯县公安局办理（一般当天可取），或提前通过"疆盾"APP在线申请，建议提前1–2天办理。费用免费。</div>
+            <div class="stop-tips">夏塔景区对持有效通行证的游客开放；若未办妥无法进入，请务必提前确认。</div>
+          </div>
+        </div>
+        <div class="stop highlight">
+          <div class="stop-time">09:30</div>
+          <div class="stop-body">
+            <div class="stop-name">夏塔旅游区<span class="stop-tag tag-nature">冰川峡谷</span><span class="stop-tag tag-star">隐藏精华</span></div>
+            <div class="stop-desc">距特克斯约60公里。夏塔是天山深处少有人知的绝美秘境：高耸的汗腾格里峰（7010米）遥遥可见，古丝绸之路的夏塔古道在此经过，峡谷内有奔涌的冰川融水与原始草场。可骑马或徒步进入，景色极为震撼，游客远少于那拉提。</div>
+            <div class="stop-tips">景区门票约50元；建议骑马进入（150–300元/时），徒步需体力较好；全程游览约3–4小时；穿防水徒步鞋。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">14:30</div>
+          <div class="stop-body">
+            <div class="stop-name">途中路过昭苏草原（可选）<span class="stop-tag tag-nature">草原</span></div>
+            <div class="stop-desc">昭苏是新疆著名的军马场所在地，浩瀚草原上马群奔腾是梦幻景象。若时间充裕可短暂停留拍照，但若时间紧张可直接前往伊宁。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">19:00</div>
+          <div class="stop-body">
+            <div class="stop-name">伊宁市 · 六星街夜游<span class="stop-tag tag-culture">文化街区</span></div>
+            <div class="stop-desc">伊宁是伊犁州首府，六星街是历史街区，俄罗斯风格老建筑与维吾尔族庭院交织，晚上灯火通明，是逛街拍照的绝佳场所。</div>
+          </div>
+        </div>
+        <div class="stop food">
+          <div class="stop-time">20:00</div>
+          <div class="stop-body">
+            <div class="stop-name">伊宁市区美食<span class="stop-tag tag-food">美食必吃</span></div>
+            <div class="stop-desc">伊宁有新疆最独特的"皮辣红"（皮芽子+辣椒+西红柿，配馕吃）；此外烤包子、马肠子（熏制马肉肠）、伊犁抓饭均是必试。夜市氛围极佳，维吾尔族、哈萨克族与汉族美食并列。</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-summary">夏塔是这趟旅程的"彩蛋"——知道的人不多，去到了都会惊叹。伊宁的夜晚则是另一种维度：多民族文化在这里交汇，市井气息温暖而真实，与荒野间的震撼形成最好的平衡。</div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card" id="d6">
+    <div class="day-num-col">
+      <div class="day-badge" style="background: #6b4c7a;">
+        <span class="day-text">DAY</span>
+        <span class="day-n">6</span>
+      </div>
+      <div class="day-connector"></div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div>
+          <div class="day-title">伊宁 → 霍城薰衣草 → 赛里木湖</div>
+          <div class="day-route">紫色花海 · 大西洋最后一滴眼泪</div>
+        </div>
+        <div class="day-drive">驾车约 2h（全程轻松）</div>
+      </div>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-time">09:00</div>
+          <div class="stop-body">
+            <div class="stop-name">霍城薰衣草花园<span class="stop-tag tag-nature">花海</span></div>
+            <div class="stop-desc">中国最大薰衣草种植基地，距伊宁约50公里。薰衣草随风摇曳，远处天山为背景。最佳花期为6月下旬至7月中旬，届时紫色花海连绵数公里，香气浓郁。非花期亦可参观，有薰衣草精油、香皂等产品购买。</div>
+            <div class="stop-tips">门票约30–50元；花期高峰建议早上9点前到达，避开大巴旅行团；穿浅色衣服拍照效果更好。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">11:30</div>
+          <div class="stop-body">
+            <div class="stop-name">霍尔果斯口岸（可选顺路）<span class="stop-tag tag-culture">边境小镇</span></div>
+            <div class="stop-desc">霍城附近即是霍尔果斯，中哈边境自由贸易区，有免税商品可购（进口食品、化妆品）。若对边境文化感兴趣可顺路一逛，约1小时。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">13:00</div>
+          <div class="stop-body">
+            <div class="stop-name">午餐（霍城县城）<span class="stop-tag tag-food">餐饮</span></div>
+            <div class="stop-desc">霍城有不少蒙古族餐厅，可尝试手把肉；亦有维吾尔族清真餐厅。</div>
+          </div>
+        </div>
+        <div class="stop highlight">
+          <div class="stop-time">14:30</div>
+          <div class="stop-body">
+            <div class="stop-name">赛里木湖<span class="stop-tag tag-nature">高山冰蚀湖</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">海拔2073米的高山湖泊，面积458平方公里，湖水呈深邃纯粹的蓝绿色，被誉为"大西洋最后一滴眼泪"（大西洋暖湿气流到此被天山阻截，形成此湖）。环湖公路43公里，可骑行或驾车绕行。日落时分湖面将天空色彩揉碎折射，令人窒息。建议在湖边过夜，等待日出。</div>
+            <div class="stop-tips">门票约65元；环湖骑行自行车租约30元/时；湖边木屋约300–500元/间，旺季极为紧俏，提前1–2周预订；湖边风大夜冷，即使夏天也需备厚外套。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">20:00</div>
+          <div class="stop-body">
+            <div class="stop-name">湖边星空 · 夜观<span class="stop-tag tag-nature">星空</span></div>
+            <div class="stop-desc">赛里木湖远离城市光污染，晴天夜空银河清晰可见。若携带相机，这是做星空摄影的绝佳机会。建议使用三脚架，ISO 3200，曝光15–25秒。</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-summary">今天的行程设计体现了伊犁的丰富层次：从人文的薰衣草庄园，到大自然最原始的造化之功——赛里木湖。这里没有过多人为装饰，只有蓝得失真的湖水和远山默默守望。</div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-card" id="d7">
+    <div class="day-num-col">
+      <div class="day-badge" style="background: var(--accent);">
+        <span class="day-text">DAY</span>
+        <span class="day-n">7</span>
+      </div>
+    </div>
+    <div class="day-content">
+      <div class="day-header">
+        <div>
+          <div class="day-title">赛里木湖 → 果子沟大桥 → 乌鲁木齐</div>
+          <div class="day-route">最后一眼 · 踏上归途</div>
+        </div>
+        <div class="day-drive">驾车约 5h（全高速）</div>
+      </div>
+      <div class="stops">
+        <div class="stop highlight">
+          <div class="stop-time">07:00</div>
+          <div class="stop-body">
+            <div class="stop-name">赛里木湖 · 日出<span class="stop-tag tag-nature">日出</span><span class="stop-tag tag-star">精华</span></div>
+            <div class="stop-desc">早起在湖边等待日出，阳光从天山峰顶漫出，湖面由深蓝渐渐变为金绿色，这是整段旅程最安静、最私密的时刻之一。此时游客极少，与湖独处。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">09:00</div>
+          <div class="stop-body">
+            <div class="stop-name">果子沟大桥观景台<span class="stop-tag tag-road">工程奇观</span></div>
+            <div class="stop-desc">距赛里木湖约40公里，是连霍高速（G30）上的标志性建筑，全长700米，高达110米，横跨果子沟峡谷。观景台可俯瞰峡谷与大桥全貌，尤其秋天（9月下旬）沟内树叶转金黄时，景色极为壮观。停留约30–45分钟。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">10:00</div>
+          <div class="stop-body">
+            <div class="stop-name">上G30连霍高速 · 返程<span class="stop-tag tag-road">高速</span></div>
+            <div class="stop-desc">全程约680公里高速，限速120km/h，实际驾车约5–5.5小时。途中可在奎屯或石河子服务区休息、加油。石河子有北疆特色的棉花田景观（秋季白色棉海壮观）。</div>
+            <div class="stop-tips">新疆高速路面质量好，但距离长，建议不要连续驾车超过2.5小时，注意休息与补水。</div>
+          </div>
+        </div>
+        <div class="stop food">
+          <div class="stop-time">18:30</div>
+          <div class="stop-body">
+            <div class="stop-name">乌鲁木齐 · 大巴扎告别晚宴<span class="stop-tag tag-food">美食收官</span></div>
+            <div class="stop-desc">回到乌鲁木齐，在国际大巴扎（亚洲最大的伊斯兰风格建筑市集）附近享用最后一顿新疆盛宴：大盘鸡、手抓饭、烤全羊、拉条子、葡萄干冰淇淋……为七天旅程画上满足的句号。</div>
+          </div>
+        </div>
+      </div>
+      <div class="day-summary">所有的旅程都有告别，但北疆伊犁留下的不只是记忆里的颜色——那种草原的辽阔、高山的凛冽、湖水的纯粹，是一种会改变人看待世界方式的体验。期待下一次重返。</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PRACTICAL INFO -->
+<section class="practical">
+  <h2>📌 出行实用指南</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>🗓️ 最佳时节</h3>
+      <ul>
+        <li>独库公路：每年6月中旬至10月初（视当年降雪情况）</li>
+        <li>薰衣草花期：6月下旬至7月中旬，错过花期景区仍可游</li>
+        <li>草原最绿：7–8月，野花盛开，是拍摄黄金期</li>
+        <li>秋季（9月底–10月初）：胡杨金黄，色彩层次最丰富</li>
+        <li>避开：国庆黄金周（10月1–7日）人多且住宿紧张</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>🚗 交通与车辆</h3>
+      <ul>
+        <li>强烈建议租SUV或越野车，部分景区入口有砾石路</li>
+        <li>乌鲁木齐有多家租车公司，提前1–2周在线预订</li>
+        <li>独库公路限速严格，切勿超速；部分路段无信号</li>
+        <li>提前下载高德地图离线包（新疆北部）</li>
+        <li>备足油量：部分山区路段加油站稀少，低于半箱即补油</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>📋 证件与手续</h3>
+      <ul>
+        <li>身份证必备；外籍人士需护照，部分景区需额外登记</li>
+        <li>夏塔景区需"边境通行证"，可通过"疆盾"APP申请，提前2–3天办理</li>
+        <li>部分路段设检查站，需出示证件并登记，配合即可</li>
+        <li>驾照需确认在新疆有效（中国大陆驾照全境通用）</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>🏨 住宿建议</h3>
+      <ul>
+        <li>那拉提毡房：旺季提前1–2周预订，约150–300元/间</li>
+        <li>赛里木湖木屋：提前1–2周，约300–500元/间；湖边风大备厚衣</li>
+        <li>伊宁市区：选市中心3星酒店，方便觅食</li>
+        <li>乔尔玛：设施简单，订民宿或帐篷营地</li>
+        <li>各县城均有性价比高的快捷酒店，60–150元/间</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>💰 费用参考</h3>
+      <ul>
+        <li>租车：400–800元/天（SUV，含保险）</li>
+        <li>主要景区门票合计：约700–900元/人</li>
+        <li>住宿7晚：约1,500–3,000元（视选择）</li>
+        <li>餐饮：人均约60–120元/天</li>
+        <li>油费（全程约1,600km）：约700–1,000元</li>
+        <li>预计总费用（2人）：约6,000–12,000元/人</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h3>🎒 必备装备</h3>
+      <ul>
+        <li>防晒：新疆紫外线极强，SPF50+防晒霜+防晒服</li>
+        <li>保暖：早晚温差大，即使夏天也需厚外套（尤其草原）</li>
+        <li>徒步鞋：防滑防水运动鞋，夏塔和喀拉峻路面不平</li>
+        <li>驱虫：云杉林和草原蚊虫较多，强力驱蚊液必备</li>
+        <li>相机：星空和草原是摄影天堂，建议带三脚架</li>
+        <li>现金：部分牧民、小摊和民宿只收现金</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>新疆北疆 · 伊犁七日精华环线</span>
+  <span>最佳出行期 2025年6月–9月 · 建议自驾 SUV</span>
+</footer>
+
+<script>
+  // Intersection Observer for day card animations
+  const cards = document.querySelectorAll('.day-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
+</script>
+
+</body>
+</html>
